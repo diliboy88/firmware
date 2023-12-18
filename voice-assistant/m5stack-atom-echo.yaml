@@ -1,10 +1,10 @@
 ---
 esphome:
-  name: m5stack-atom-echo
-  friendly_name: M5Stack Atom Echo
+  name: m5stack-m5stickcplus
+  friendly_name: M5Stack M5StickC Plus
   name_add_mac_suffix: true
   project:
-    name: m5stack.atom-echo-voice-assistant
+    name: m5stack.m5stickcplus-voice-assistant
     version: "1.0"
   min_version: 2023.11.1
 
@@ -39,27 +39,20 @@ button:
     name: Factory reset
 
 i2s_audio:
-  i2s_lrclk_pin: GPIO33
-  i2s_bclk_pin: GPIO19
+  i2s_lrclk_pin: GPIO10
+  i2s_bclk_pin: GPIO15
 
 microphone:
   - platform: i2s_audio
     id: echo_microphone
-    i2s_din_pin: GPIO23
+    i2s_din_pin: GPIO34
     adc_type: external
     pdm: true
 
-speaker:
-  - platform: i2s_audio
-    id: echo_speaker
-    i2s_dout_pin: GPIO22
-    dac_type: external
-    mode: mono
 
 voice_assistant:
   id: va
   microphone: echo_microphone
-  speaker: echo_speaker
   noise_suppression_level: 2
   auto_gain: 31dBFS
   volume_multiplier: 2.0
